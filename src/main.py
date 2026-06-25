@@ -1,7 +1,7 @@
 """Application entry point."""
 
 
-def main():
+def main() -> None:
     """Run the application."""
     print("Hello from {{PROJECT_NAME}}!")
 

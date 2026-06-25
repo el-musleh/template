@@ -5,7 +5,6 @@ import argparse
 import sys
 from pathlib import Path
 
-
 MODULE_CLAUDE_MD = """# CLAUDE.md — src/{module}/
 
 ## Module Purpose
@@ -44,18 +43,14 @@ def scaffold(module_name: str, description: str = "") -> None:
         sys.exit(1)
 
     module_dir.mkdir(parents=True)
-    (module_dir / "__init__.py").write_text(
-        INIT_BOILERPLATE.format(module=module_name)
-    )
+    (module_dir / "__init__.py").write_text(INIT_BOILERPLATE.format(module=module_name))
     (module_dir / "CLAUDE.md").write_text(
         MODULE_CLAUDE_MD.format(
             module=module_name,
             description=description or f"{module_name} module.",
         )
     )
-    test_file.write_text(
-        TEST_BOILERPLATE.format(module=module_name)
-    )
+    test_file.write_text(TEST_BOILERPLATE.format(module=module_name))
 
     print(f"Created module 'src.{module_name}'")
     print(f"  - {module_dir / '__init__.py'}")
@@ -64,11 +59,10 @@ def scaffold(module_name: str, description: str = "") -> None:
 
 
 def main() -> None:
+    """Run the scaffold CLI."""
     parser = argparse.ArgumentParser(description="Scaffold a new src/ module")
     parser.add_argument("module", help="Name of the new module (e.g. 'perception')")
-    parser.add_argument(
-        "--description", "-d", default="", help="Short description for CLAUDE.md"
-    )
+    parser.add_argument("--description", "-d", default="", help="Short description for CLAUDE.md")
     args = parser.parse_args()
     scaffold(args.module, args.description)
 
