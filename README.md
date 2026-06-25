@@ -21,6 +21,10 @@ python -m src.main
 
 See [AGENTS.md](AGENTS.md) for the full structure guide and AI agent instructions.
 
+## Security
+
+See [SECURITY.md](docs/SECURITY.md) for the security policy and vulnerability reporting process.
+
 ## Documentation
 
 - [Architecture](docs/architecture.md)

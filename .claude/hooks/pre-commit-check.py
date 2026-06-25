@@ -26,7 +26,7 @@ ROOT_FILES_ALLOWED = {
 }
 
 
-def check_root_files():
+def check_root_files() -> list[str]:
     """Check for stray files in repository root."""
     errors = []
     for item in os.listdir("."):
@@ -38,7 +38,7 @@ def check_root_files():
     return errors
 
 
-def check_tests():
+def check_tests() -> list[str]:
     """Run the test suite and report failures."""
     try:
         result = subprocess.run(
@@ -56,7 +56,7 @@ def check_tests():
     return []
 
 
-def main():
+def main() -> None:
     """Run all pre-commit checks."""
     errors = check_root_files()
     # Uncomment to enforce tests before commits:
